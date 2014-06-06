@@ -12,7 +12,7 @@ class LoggerSpec extends MirthRhinoSpec {
     @Unroll
     def "Check that call to logger produces output on console"() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/logger.js")
+        loadJSIntoContext("/emulator/connect/logger.js")
         when: "passed some logger message data"
         context.evaluateString(scope, "logger.info('$inputData');", "loggerFunctions", 1, null)
         then: "expect the same message to be output to console"

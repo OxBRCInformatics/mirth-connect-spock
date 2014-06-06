@@ -21,9 +21,9 @@ abstract class MirthRhinoSpec extends Specification {
     Scriptable scope
 
     List<String> defaultJSMocks = [
-            "src/main/js/emulator/mcConsole.js",
-            "src/main/js/emulator/mcDatabase.js",
-            "src/main/js/emulator/connect/dateUtil.js"
+            "/emulator/mcConsole.js",
+            "/emulator/mcDatabase.js",
+            "/emulator/connect/dateUtil.js"
     ]
 
     /**
@@ -62,8 +62,9 @@ abstract class MirthRhinoSpec extends Specification {
      * @param fileName The name of the file to be loaded.
      */
     void loadJSIntoContext(String fileName) {
-        File emulatorFile = fileName as File
-        context.evaluateString(scope, emulatorFile.text, emulatorFile.name, 1, null)
+		println "loading ${fileName}"
+		String incomingJS = this.class.getResource(fileName).text
+        context.evaluateString(scope, incomingJS, fileName, 1, null)
     }
 
     List<String> getJSMocks() {
