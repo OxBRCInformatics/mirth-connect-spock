@@ -1,5 +1,6 @@
 package nhs.mirth.js
 
+import nhs.mirth.EmulatorJSResource
 import nhs.mirth.MirthRhinoSpec
 import spock.lang.Ignore
 import spock.lang.Unroll
@@ -9,11 +10,18 @@ import spock.lang.Unroll
  */
 
 class AlerterSpec extends MirthRhinoSpec {
+
+	@Override
+	List<String> getJSMocks() {
+		return [
+				EmulatorJSResource.MIRTH_CONNECT_MESSAGING.resourcePath,
+				EmulatorJSResource.MIRTH_CONNECT_ALERTER.resourcePath
+		]
+	}
+
     @Ignore
     def "Testing the alerting mechanism returns XML which is then routed by the Alerting Channel"() {
-        setup:
-        loadJSIntoContext("/emulator/connect/messaging.js")
-        loadJSIntoContext("/emulator/connect/alerter.js")
+
         when: "an alert is fired"
         // context.evaluateString(scope, "message.setMsg('$inputData');", "messageFunctions", 1, null)
         then: "expect some XML to be returned"

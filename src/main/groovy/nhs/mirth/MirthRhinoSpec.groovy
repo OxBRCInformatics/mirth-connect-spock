@@ -1,8 +1,6 @@
 package nhs.mirth
 
 import spock.lang.Specification
-import spock.lang.Shared
-import java.text.SimpleDateFormat
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
@@ -21,9 +19,9 @@ abstract class MirthRhinoSpec extends Specification {
     Scriptable scope
 
     List<String> defaultJSMocks = [
-            "/emulator/mcConsole.js",
-            "/emulator/mcDatabase.js",
-            "/emulator/connect/dateUtil.js"
+			EmulatorJSResource.MIRTH_CONNECT_CONSOLE.resourcePath,
+			EmulatorJSResource.MIRTH_CONNECT_DATABASE.resourcePath,
+			EmulatorJSResource.MIRTH_CONNECT_DATE_UTIL.resourcePath
     ]
 
     /**
@@ -62,7 +60,6 @@ abstract class MirthRhinoSpec extends Specification {
      * @param fileName The name of the file to be loaded.
      */
     void loadJSIntoContext(String fileName) {
-		println "loading ${fileName}"
 		String incomingJS = this.class.getResource(fileName).text
         context.evaluateString(scope, incomingJS, fileName, 1, null)
     }
