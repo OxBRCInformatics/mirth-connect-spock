@@ -1,5 +1,5 @@
 # Mirth Connect testing made easy with Spock
-
+[![Build Status](https://travis-ci.org/OxBRCInformatics/mirth-connect-spock.svg?branch=develop)](https://travis-ci.org/OxBRCInformatics/mirth-connect-spock)
 This library provides a suite of tools to make testing Mirth Connect channels much simpler. Get up and running quickly:
 #####Gradle (build.gradle)
 ```groovy
