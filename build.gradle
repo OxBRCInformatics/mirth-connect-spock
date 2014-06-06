@@ -71,7 +71,7 @@ bintray {
         publications = ['mavenStuff'] // When uploading Maven-based publication files
         pkg {
             repo = 'maven'
-            name = name
+            name = 'mirth-connect-spock'
             desc = description
             licenses = ['MIT']
             labels = ['groovy']

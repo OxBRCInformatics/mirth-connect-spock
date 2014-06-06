@@ -47,6 +47,12 @@ $ gradle build
 $ gradle bintrayUpload
 ```
 
+# More information
+
+* Source code: https://github.com/OxBRCInformatics/mirth-connect-spock
+* Issue tracker: https://github.com/OxBRCInformatics/mirth-connect-spock/issues
+* Maven artifacts: https://bintray.com/spikeheap/maven/mirth-connect-spock/view
+
 # License
 
 This project is released under the MIT License (MIT)
