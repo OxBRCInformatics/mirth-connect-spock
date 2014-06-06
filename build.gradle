@@ -1,0 +1,80 @@
+buildscript {
+    repositories {
+        maven { url 'http://jcenter.bintray.com' }
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'bintray'
+
+project.description = 'A suite of tools to make testing Mirth Connect channels much simpler.'
+project.version = "1.0.0"
+project.group = "uk.nhs.ouh.mirth"
+
+def description = project.description
+
+repositories {
+    mavenLocal()
+    maven { url 'http://dl.bintray.com/spikeheap/maven' }
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.1'
+    compile "org.spockframework:spock-core:0.7-groovy-2.0"
+    compile "com.mirth.connect:mirth-server:3.0.3"
+    //compile "uk.co.ryanbrooks.groovy:groovy-equality-mixin:1.0.3"
+    compile 'org.mozilla:rhino:1.7R4'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+publishing {
+    publications {
+        mavenStuff(MavenPublication) {
+            from components.java
+
+
+        artifact sourcesJar {
+            classifier "sources"
+        }
+
+        //artifact javadocJar {
+        //            classifier "javadoc"
+        //}
+        }
+    }
+}
+
+bintray {
+        user = bintrayUser //this usually comes from gradle.properties file in ~/.gradle
+        key = bintrayKey //this usually comes from gradle.properties file in ~/.gradle
+        publications = ['mavenStuff'] // When uploading Maven-based publication files
+        pkg {
+            repo = 'maven'
+            name = name
+            desc = description
+            licenses = ['MIT']
+            labels = ['groovy']
+        }
+        dryRun = false // whether to run this as dry-run, without deploying
+    }

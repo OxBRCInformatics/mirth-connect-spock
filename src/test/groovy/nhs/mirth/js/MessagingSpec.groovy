@@ -12,7 +12,7 @@ class MessagingSpec extends MirthRhinoSpec {
     @Unroll
     def "Setting the inbound message (msg) object"() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/messaging.js")
+        loadJSIntoContext("/emulator/connect/messaging.js")
         when: "passed some input message data"
         context.evaluateString(scope, "message.setMsg('$inputData');", "messageFunctions", 1, null)
         then: "expect some XML to be returned"
@@ -26,7 +26,7 @@ class MessagingSpec extends MirthRhinoSpec {
     @Unroll
     def "Setting the outbound message (tmp) object"() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/messaging.js")
+        loadJSIntoContext("/emulator/connect/messaging.js")
         when: "passed some output template data"
         context.evaluateString(scope, "message.setTmp('$outputData');", "messageFunctions", 1, null)
         then: "expect some XML to be returned"

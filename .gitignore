@@ -1,0 +1,5 @@
+/.gradle/
+/build/
+/.idea/
+/atlassian-ide-plugin.xml
+/mirth-connect-spock.iml

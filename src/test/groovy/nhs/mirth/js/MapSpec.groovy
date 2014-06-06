@@ -14,7 +14,7 @@ class MapSpec extends MirthRhinoSpec {
     @Unroll
     def "Checking that any value store on map "() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/map.js")
+        loadJSIntoContext("/emulator/connect/map.js")
         when: "passed some key/value info"
         context.evaluateString(scope, "channelMap.put('$key', '$value');", "mapFunctions", 1, null)
         then: "check if the value stored on the map at all"
@@ -29,7 +29,7 @@ class MapSpec extends MirthRhinoSpec {
     @Unroll
     def "Checking that correct values store on map correctly"() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/map.js")
+        loadJSIntoContext("/emulator/connect/map.js")
         when: "passed some key/value info"
         context.evaluateString(scope, "channelMap.put('$key', '$value');", "mapFunctions", 1, null)
         then: "check if the value stored for a particular key is the same"
@@ -45,7 +45,7 @@ class MapSpec extends MirthRhinoSpec {
     @Unroll
     def "Attempt to retrieve a key/value pair that does not exist on the map"() {
         setup:
-        loadJSIntoContext("src/main/js/emulator/connect/map.js")
+        loadJSIntoContext("/emulator/connect/map.js")
         when: "passed some key/value info"
         context.evaluateString(scope, "var valueOnMap = channelMap.get('$key');", "mapFunctions", 1, null)
         then: "check if the value returned is null"
