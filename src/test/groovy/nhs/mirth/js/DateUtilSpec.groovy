@@ -7,7 +7,7 @@ class DateUtilSpec extends MirthRhinoSpec {
 
     @Override
     List<String> getJSMocks() {
-        return ["src/main/js/emulator/connect/dateUtil.js"]
+        return ["/emulator/connect/dateUtil.js"]
     }
 
     def "The DateUtil var needs to be a reference to the Mirth DateUtil Java class"() {
