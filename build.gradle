@@ -28,7 +28,7 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.1'
     compile "org.spockframework:spock-core:0.7-groovy-2.0"
-    //compile "com.mirth.connect:mirth-server:3.0.3"
+    compile "com.mirth.connect:mirth-server:3.0.3"
     //compile "uk.co.ryanbrooks.groovy:groovy-equality-mixin:1.0.3"
     compile 'org.mozilla:rhino:1.7R4'
 }
