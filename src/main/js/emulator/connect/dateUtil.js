@@ -4,4 +4,4 @@
  * @global {mcDateUtils} Emulation of MC date utilities
  *
  */
-var DateUtil = Packages.nhs.mirth.DateUtil;
+var DateUtil = Packages.com.mirth.connect.server.userutil.DateUtil;
