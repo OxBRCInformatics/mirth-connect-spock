@@ -1,8 +1,6 @@
 package nhs.mirth
 
 import spock.lang.Specification
-import spock.lang.Shared
-import java.text.SimpleDateFormat
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
@@ -21,9 +19,9 @@ abstract class MirthRhinoSpec extends Specification {
     Scriptable scope
 
     List<String> defaultJSMocks = [
-            "/emulator/mcConsole.js",
-            "/emulator/mcDatabase.js",
-            "/emulator/connect/dateUtil.js"
+			EmulatorJSResource.MIRTH_CONNECT_CONSOLE.resourcePath,
+			EmulatorJSResource.MIRTH_CONNECT_DATABASE.resourcePath,
+			EmulatorJSResource.MIRTH_CONNECT_DATE_UTIL.resourcePath
     ]
 
     /**
@@ -58,14 +56,22 @@ abstract class MirthRhinoSpec extends Specification {
 
     /**
      * Load a JavaScript file into the Rhino engine. For resources held within the project you will probably want a filename like:
-     * 		"src/main/js/componentX/script.js"
+     * 		"/script.js" when it is stored in "/src/main/resources/script/js"
      * @param fileName The name of the file to be loaded.
      */
-    void loadJSIntoContext(String fileName) {
-		println "loading ${fileName}"
+	void loadJSIntoContext(String fileName) {
 		String incomingJS = this.class.getResource(fileName).text
-        context.evaluateString(scope, incomingJS, fileName, 1, null)
-    }
+		context.evaluateString(scope, incomingJS, fileName, 1, null)
+	}
+
+	/**
+	 * Load a JavaScript emulator library into the context.
+	 * @param resource the resource to load
+	 */
+	void loadJSIntoContext(EmulatorJSResource resource) {
+		String incomingJS = this.class.getResource(resource.resourcePath).text
+		context.evaluateString(scope, incomingJS, resource.resourcePath, 1, null)
+	}
 
     List<String> getJSMocks() {
         return defaultJSMocks

@@ -14,7 +14,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'bintray'
 
 project.description = 'A suite of tools to make testing Mirth Connect channels much simpler.'
-project.version = "1.0.0"
+project.version = "1.1.0"
 project.group = "uk.nhs.ouh.mirth"
 
 def description = project.description
@@ -71,7 +71,7 @@ bintray {
         publications = ['mavenStuff'] // When uploading Maven-based publication files
         pkg {
             repo = 'maven'
-            name = name
+            name = 'mirth-connect-spock'
             desc = description
             licenses = ['MIT']
             labels = ['groovy']

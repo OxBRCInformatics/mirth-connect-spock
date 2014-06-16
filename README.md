@@ -1,5 +1,5 @@
 # Mirth Connect testing made easy with Spock
-
+[![Build Status](https://travis-ci.org/OxBRCInformatics/mirth-connect-spock.svg?branch=develop)](https://travis-ci.org/OxBRCInformatics/mirth-connect-spock)
 This library provides a suite of tools to make testing Mirth Connect channels much simpler. Get up and running quickly:
 #####Gradle (build.gradle)
 ```groovy
@@ -35,6 +35,14 @@ Yeah, that's possible too. Unlike Mirth Connect, the Mirth Results domain classe
 2. In the `dependencies` section of your `build.gradle` add `compile fileTree(dir: 'lib', include: '*.jar')`
 3. Crack on! Use the standard Rhino method to access the Java class (e.g. `var myClassOfInterest = Packages.com.mirth.results.ClassOfInterest;`)
 
+## Using the Mirth Connect emulator
+
+The available emulator packages are provided by the `EmulatorJSResource` enum. To load an emulator package into the `MirthRhinoSpec` specification, simply add
+
+```groovy
+loadJSIntoContext(EmulatorJSResource.MIRTH_CONNECT_MESSAGING)
+```
+
 # Contributing
 
 Pull requests, issues and abuse on Twitter are all welcome!
@@ -46,6 +54,12 @@ To publish this to Bintray you need to update the credentials in `build.gradle` 
 $ gradle build
 $ gradle bintrayUpload
 ```
+
+# More information
+
+* Source code: https://github.com/OxBRCInformatics/mirth-connect-spock
+* Issue tracker: https://github.com/OxBRCInformatics/mirth-connect-spock/issues
+* Maven artifacts: https://bintray.com/spikeheap/maven/mirth-connect-spock/view
 
 # License
 
