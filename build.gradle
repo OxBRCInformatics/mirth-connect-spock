@@ -3,10 +3,13 @@ buildscript {
         maven { url 'http://jcenter.bintray.com' }
     }
     dependencies {
+        // To allow us to use Pride for multi-module builds
+        classpath "com.prezi.gradle.pride:gradle-pride-plugin:0.6.6"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
     }
 }
 
+apply plugin: "pride"
 apply plugin: 'idea'
 apply plugin: 'groovy'
 apply plugin: 'maven'
