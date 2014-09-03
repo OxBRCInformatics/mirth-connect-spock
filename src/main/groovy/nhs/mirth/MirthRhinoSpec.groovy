@@ -18,11 +18,7 @@ abstract class MirthRhinoSpec extends Specification {
     Context context
     Scriptable scope
 
-    List<String> defaultJSMocks = [
-			EmulatorJSResource.MIRTH_CONNECT_CONSOLE.resourcePath,
-			EmulatorJSResource.MIRTH_CONNECT_DATABASE.resourcePath,
-			EmulatorJSResource.MIRTH_CONNECT_DATE_UTIL.resourcePath
-    ]
+    List<String> defaultJSMocks = EmulatorJSResource.values()*.resourcePath
 
     /**
      * Setup, prior to every spec test
@@ -45,6 +41,15 @@ abstract class MirthRhinoSpec extends Specification {
         getJSMocks().each {
             loadJSIntoContext(it)
         }
+
+        /**
+         * Load the code templates
+         **/
+        def mirthDeploymentName = this.class.package?.name.split('\\.')[0]
+        File codeTemplates = new File(this.class.classLoader.getResource("${mirthDeploymentName}/code_templates").toURI())
+        codeTemplates.listFiles().each{ File jsSource ->
+          context.evaluateString(scope, jsSource.text, jsSource.name, 1, null)
+        }
     }
 
     /**
@@ -60,6 +65,13 @@ abstract class MirthRhinoSpec extends Specification {
      * @param fileName The name of the file to be loaded.
      */
 	void loadJSIntoContext(String fileName) {
+
+    // If the file name starts with a '/' it's absolute, otherwise
+    // it's relative to the package position
+    if (!fileName.startsWith('/')) {
+      fileName = getPackageAsPath() + fileName
+    }
+
 		String incomingJS = this.class.getResource(fileName).text
 		context.evaluateString(scope, incomingJS, fileName, 1, null)
 	}
@@ -72,6 +84,14 @@ abstract class MirthRhinoSpec extends Specification {
 		String incomingJS = this.class.getResource(resource.resourcePath).text
 		context.evaluateString(scope, incomingJS, resource.resourcePath, 1, null)
 	}
+
+  /**
+   * Get the package name of the class as a Unix-style path.
+   * FIXME: This needs tests. Sad face.
+   **/
+  String getPackageAsPath(){
+    return "/${this.class.package?.name.replaceAll('\\.', '/')}/"
+  }
 
     List<String> getJSMocks() {
         return defaultJSMocks
