@@ -46,7 +46,8 @@ abstract class MirthRhinoSpec extends Specification {
          * Load the code templates
          **/
         def mirthDeploymentName = this.class.package?.name.split('\\.')[0]
-        File codeTemplates = new File(this.class.classLoader.getResource("${mirthDeploymentName}/code_templates").toURI())
+
+        File codeTemplates = new File(this.class.classLoader.getResource("${mirthDeploymentName}/code_templates")?.toURI() ?: '')
         codeTemplates.listFiles().each{ File jsSource ->
           context.evaluateString(scope, jsSource.text, jsSource.name, 1, null)
         }
