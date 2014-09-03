@@ -18,11 +18,7 @@ abstract class MirthRhinoSpec extends Specification {
     Context context
     Scriptable scope
 
-    List<String> defaultJSMocks = [
-			EmulatorJSResource.MIRTH_CONNECT_CONSOLE.resourcePath,
-			EmulatorJSResource.MIRTH_CONNECT_DATABASE.resourcePath,
-			EmulatorJSResource.MIRTH_CONNECT_DATE_UTIL.resourcePath
-    ]
+    List<String> defaultJSMocks = EmulatorJSResource.values()*.resourcePath
 
     /**
      * Setup, prior to every spec test
