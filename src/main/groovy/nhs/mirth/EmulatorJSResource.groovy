@@ -15,6 +15,7 @@ public enum EmulatorJSResource {
 	MIRTH_CONNECT_ROUTING('/emulator/connect/router.js'),
 	MIRTH_CONNECT_UTILS('/emulator/connect/utils.js'),
 
+
     final String resourcePath
 
 	EmulatorJSResource(String resourcePath) {
