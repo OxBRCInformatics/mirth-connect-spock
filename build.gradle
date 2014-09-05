@@ -14,7 +14,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'bintray'
 
 project.description = 'A suite of tools to make testing Mirth Connect channels much simpler.'
-project.version = "1.3.3"
+project.version = "1.3.4"
 project.group = "uk.nhs.ouh.mirth"
 
 def description = project.description
@@ -70,6 +70,7 @@ bintray {
         key = bintrayKey //this usually comes from gradle.properties file in ~/.gradle
         publications = ['mavenStuff'] // When uploading Maven-based publication files
         pkg {
+            userOrg = 'oxbrc'
             repo = 'maven'
             name = 'mirth-connect-spock'
             desc = description

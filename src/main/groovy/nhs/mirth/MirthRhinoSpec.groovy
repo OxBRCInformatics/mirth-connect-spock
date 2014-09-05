@@ -15,6 +15,8 @@ import org.mozilla.javascript.Scriptable;
 abstract class MirthRhinoSpec extends Specification {
 
 
+    final String XML_OUTPUT_ROOT = "build/xml_output/${packageAsPath}"
+
     Context context
     Scriptable scope
 
