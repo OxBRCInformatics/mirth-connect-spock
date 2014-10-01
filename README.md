@@ -54,7 +54,7 @@ To publish this to Bintray you need to update the credentials in `build.gradle` 
 $ gradle build
 $ gradle bintrayUpload
 ```
-
+Do not forget to PUBLISH it in Bintray to confirm it, otherwise it will be removed within a couple of minutes!
 # More information
 
 * Source code: https://github.com/OxBRCInformatics/mirth-connect-spock
