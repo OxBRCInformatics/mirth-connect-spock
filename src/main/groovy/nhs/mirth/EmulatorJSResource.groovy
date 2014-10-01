@@ -5,8 +5,8 @@ package nhs.mirth;
  * @author Ryan Brooks
  */
 public enum EmulatorJSResource {
-	MIRTH_CONNECT_CONSOLE('/emulator/mcConsole.js'),
-	MIRTH_CONNECT_DATABASE('/emulator/mcDatabase.js'),
+  MIRTH_CONNECT_CONSOLE('/emulator/mcConsole.js'),
+  MIRTH_CONNECT_DATABASE('/emulator/mcDatabase.js'),
 	MIRTH_CONNECT_ALERTER('/emulator/connect/alerter.js'),
 	MIRTH_CONNECT_DATE_UTIL('/emulator/connect/dateUtil.js'),
 	MIRTH_CONNECT_LOGGER('/emulator/connect/logger.js'),
@@ -14,7 +14,7 @@ public enum EmulatorJSResource {
 	MIRTH_CONNECT_MESSAGING('/emulator/connect/messaging.js'),
 	MIRTH_CONNECT_ROUTING('/emulator/connect/router.js'),
 	MIRTH_CONNECT_UTILS('/emulator/connect/utils.js'),
-
+  MIRTH_CONNECT_FILE_UTIL('/emulator/connect/fileUtil.js')
 
     final String resourcePath
 
