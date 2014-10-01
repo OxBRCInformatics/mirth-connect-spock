@@ -13,7 +13,8 @@ public enum EmulatorJSResource {
 	MIRTH_CONNECT_MAP('/emulator/connect/map.js'),
 	MIRTH_CONNECT_MESSAGING('/emulator/connect/messaging.js'),
 	MIRTH_CONNECT_ROUTING('/emulator/connect/router.js'),
-	MIRTH_CONNECT_UTILS('/emulator/connect/utils.js')
+	MIRTH_CONNECT_UTILS('/emulator/connect/utils.js'),
+    MIRTH_CONNECT_FILE_UTIL('/emulator/connect/fileUtil.js')
 
     final String resourcePath
 
