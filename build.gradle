@@ -14,7 +14,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'bintray'
 
 project.description = 'A suite of tools to make testing Mirth Connect channels much simpler.'
-project.version = "1.3.4"
+project.version = "1.3.5"
 project.group = "uk.nhs.ouh.mirth"
 
 def description = project.description
