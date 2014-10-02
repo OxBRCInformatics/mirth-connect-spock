@@ -27,6 +27,11 @@ var responseMap = new mcMapper();
  * @global {mcMapper} Emulation of the MC connector map
  */
 var connectorMap = new mcMapper();
+/**
+ * Emulation of the MC source map
+ * @global {mcMapper} Emulation of the MC connector map
+ */
+var sourceMap = new mcMapper();
 
 /**
  * @constructor Constructs a mcMapper Object that resembles MC variable maps
