@@ -4,3 +4,6 @@
 /atlassian-ide-plugin.xml
 /mirth-connect-spock.iml
 *.iws
+*.properties
+gradle/
+*.ipr
